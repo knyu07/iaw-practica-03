@@ -12,6 +12,8 @@ apt install apache2 -y
 # Instalamos los módulos de PHP
 apt install php libapache2-mod-php php-mysql -y
 
+#-------------- Herramientas Administrativas -----------------------#
+
 # INSTALACIÓN ADMINER
 # Creamos carpeta
 sudo mkdir /var/www/html/Adminer
@@ -25,18 +27,31 @@ wget https://github.com/vrana/adminer/releases/download/v4.7.7/adminer-4.7.7-mys
 mv adminer-4.7.7-mysql.php index.php
 
 # INSTALACIÓN DE PHPMYADMIN
+#VARIABLES
+IP_PRIVADA_MYSQL=172.31.38.125
 
-# Configuramos la contraseña para phpMyAdmin en MySQL
-PHPMYADMIN_PASSWD=root
+#Instalamos la utilidad unzip
+apt install unzip -y
 
-# Configuramos las opciones de instalación de phpMyAdmin
-echo "phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2" | debconf-set-selections
-echo "phpmyadmin phpmyadmin/dbconfig-install boolean true" | debconf-set-selections
-echo "phpmyadmin phpmyadmin/mysql/app-pass password $PHPMYADMIN_PASSWD" | debconf-set-selections
-echo "phpmyadmin phpmyadmin/mysql/app-password-confirm password $PHPMYADMIN_PASSWD" | debconf-set-selections
+#Descargamos el código fuente de phpMyAdmin
+cd /home/Ubuntu
+rm -rf phpMyAdmin-5.0.4-all-languages.zip
+wget https://files.phpmyadmin.net/phpMyAdmin/5.0.4/phpMyAdmin-5.0.4-all-languages.zip
 
-# Instalamos phpMyAdmin
-apt install phpmyadmin php-mbstring php-zip php-gd php-json php-curl -y
+#Descomprimimos el archivo .zip
+unzip phpMyAdmin-5.0.4-all-languages.zip
+
+#Borramos el archivo .zip
+rm -rf phpMyAdmin-5.0.4-all-languages.zip
+
+#Movemos el directorio de phpMyAdmin al directorio /var/www/html
+mv phpMyAdmin-5.0.4-all-languages/ /var/www/html/phpmyadmin
+
+#Configuramos el archivo config.inc.php de phpMyAdmin
+cd /var/www/html/phpmyadmin
+mv config.sample.inc.php config.inc.php
+sed -i "s/localhost/$IP_PRIVADA_MYSQL/" /var/www/html/phpmyadmin/config.inc.php
+
 
 # INSTALACIÓN GOACCESS
 
@@ -75,10 +90,5 @@ rm -rf /var/www/html/index.htmlrm -rf /var/www/html/iaw-practica-lamp
 #Cambiamos los permisos
 chown www-data:www-data * -R
 
-#VARIABLES
-IP_PRIVADA_MYSQL=172.31.37.96
-
-#Configuramos el archivo config.php
-sed -i "s/localhost/$IP_PRIVADA_MYSQL/" /var/www/html/config.php
 
 

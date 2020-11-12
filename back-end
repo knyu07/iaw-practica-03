@@ -9,7 +9,7 @@ apt install mysql-server -y
 
 #VARIABLES
 BD_ROOT_PASSWD=root
-IP_PRIVADA_MYSQL=172.31.37.96
+IP_PRIVADA_MYSQL=172.31.38.125
 IP_PRIVADA_FRONT=172.31.87.228
 ROOT_MYSQL=pilar
 
@@ -38,9 +38,4 @@ sudo sed -i "s/127.0.0.1/$IP_PRIVADA_MYSQL/" /etc/mysql/mysql.conf.d/mysqld.cnf
 #Reiniciamos servicio MySQL
 /etc/init.d/mysql restart
 
-#-----------------------------------------#
 
-#Asignamos privilegios de usuario de MySQL con GRANT
-mysql -u root <<< "CREATE USER $ROOT_MYSQL@'%' IDENTIFIED BY $BD_ROOT_PASSWD;"
-mysql -u root <<< "GRANT ALL PRIVILEGES ON 'lamp_db'.* TO $ROOT_MYSQL@$IP_PRIVADA_FRONT;"
-mysql -u root <<< "FLUSH PRIVILEGES;"
