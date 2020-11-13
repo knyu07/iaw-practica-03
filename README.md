@@ -39,6 +39,7 @@ En ella creamos nuestra front-end.sh y haremos nuestros script escpedífico para
 - Instalación de Adminer 
 
 :exclamation: Tendremos que configurar el archivo config.inc.conf 
+
 :exclamation: Además de configurar el archivo config.php
 
 Esto se hace para que entre las máquinas frond-end y back-end se vean entre ellas
