@@ -19,7 +19,7 @@
 
  ################################################
 
- ## INSTALACIÓN
+## INSTALACIÓN
 
 ### Front-end:
 
@@ -54,6 +54,8 @@ Los requisitos para esta máquina serían
 En ella crearemos nuestro back-end.sh y haremos nuestro script específico para esta máquina:
 
 - Instalación de MySQL Server 
+
+:exclamation: Configuramos el archivo mysqld.conf para que conecte con el front-end 
 
 Creados nuestras máquinas y script para fornt-end y back-end ejecutamos. 
 
