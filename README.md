@@ -12,13 +12,44 @@
 
 ![](Imágenes/red.png);
 
-> - Una capa de front-end, formada por un servidor web con Apache HTTP Server.
+> - Una capa de front-end, que será pública
 
-> - Una capa de back-end, formada por un servidor MySQL.
+> - Una capa de back-end, que será privada
 
 
- #------------------------------------------------------------------------------------------------#
+ ################################################
 
  ## INSTALACIÓN
 
+### Front-end:
+
+Lo requisitos para esta máquina serían
+
+- Abrir puerto SSH
+- Abrir puerto HTTP
+- Abrir puerto HTTPS
+- Abrir puerto MySQL/Aurora
+
+En ella creamos nuestra front-end.sh y haremos nuestros script escpedífico para esta máquina:
+
+- Instalación de Apache
+- Instalación de PHP
+- Instalación de phpMyAdmin
+- Instalación de GoAccess
+- Instalación de Adminer 
+
+### Back-end
+
+Los requisitos para esta máquina serían
+
+- Abrir puerto SSH
+- Abrir puerto MySQL/Aurora
+
+En ella crearemos nuestro back-end.sh y haremos nuestro script específico para esta máquina:
+
+- Instalación de MySQL Server 
+
+:exclamation: Tendremos que configurar el archivo config.inc.conf de tal manera para que ambas máquinas se vean
+
+Creados nuestras máquinas y script para fornt-end y back-end ejecutamos. 
 
