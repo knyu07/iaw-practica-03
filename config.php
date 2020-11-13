@@ -1,6 +1,6 @@
 <?php
 
-define('DB_HOST', '54.236.33.182');
+define('DB_HOST', '172.31.52.246');
 define('DB_NAME', 'lamp_db');
 define('DB_USER', 'lamp_user');
 define('DB_PASSWORD', 'lamp_password');
