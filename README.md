@@ -53,3 +53,4 @@ En ella crearemos nuestro back-end.sh y haremos nuestro script específico para 
 
 Creados nuestras máquinas y script para fornt-end y back-end ejecutamos. 
 
+:smile_cat:
