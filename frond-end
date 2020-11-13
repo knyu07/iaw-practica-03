@@ -28,7 +28,7 @@ mv adminer-4.7.7-mysql.php index.php
 
 # INSTALACIÓN DE PHPMYADMIN
 #VARIABLES
-IP_PRIVADA_MYSQL=172.31.38.125
+IP_PRIVADA_MYSQL=54.236.33.182
 
 #Instalamos la utilidad unzip
 apt install unzip -y
@@ -51,7 +51,7 @@ mv phpMyAdmin-5.0.4-all-languages/ /var/www/html/phpmyadmin
 cd /var/www/html/phpmyadmin
 mv config.sample.inc.php config.inc.php
 sed -i "s/localhost/$IP_PRIVADA_MYSQL/" /var/www/html/phpmyadmin/config.inc.php
-
+sed -i "s/localhost/$IP_PRIVADA_MYSQL/" /var/www/html/config.php
 
 # INSTALACIÓN GOACCESS
 
@@ -89,6 +89,14 @@ rm -rf /var/www/html/index.htmlrm -rf /var/www/html/iaw-practica-lamp
 
 #Cambiamos los permisos
 chown www-data:www-data * -R
+
+#Para acceder al index a través de la IP:
+cd /var/www/html
+mv index.html pipo
+mv add.html index.html
+
+#Reiniciamos
+systemctl restart apache2
 
 
 

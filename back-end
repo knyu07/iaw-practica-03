@@ -1,17 +1,23 @@
 #!/bin/bash
 set -x
 
+#VARIABLES
+BD_ROOT_PASSWD=root
+IP_PUBLICA_FRONT=18.232.83.127
+
 # Actualizamos la lista de paquetes
 apt update
 
+#Instalamos las librerias de PHP para MySQL
+apt-get install debconf-utils -y
+apt-get install php libapache2-mod-php php-mysql -y
+
+#Estamos estableciendo la contraseña del usuario root en MySQL
+debconf-set-selections <<<"mysql-server mysql-server/root_password password $DB_ROOT_PASSWD"
+debconf-set-selections <<<"mysql-server mysql-server/root_password_again password $DB_ROOT_PASSWD"
+
 # Instalamos el MySQL Server
 apt install mysql-server -y
-
-#VARIABLES
-BD_ROOT_PASSWD=root
-IP_PRIVADA_FRONT=172.31.87.228
-ROOT_MYSQL=pilar
-
 
 # Actualizamos la contraseña de root de MySQL
 mysql -u root <<< "ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY '$BD_ROOT_PASSWD';"
@@ -32,9 +38,7 @@ mysql -u root -p$BD_ROOT_PASSWD < /home/ubuntu/iaw-practica-lamp/db/database.sql
 
 #Configuramos MySQL para permitir conexiones desde la IP privada de la instancia
 
-sudo sed -i "s/127.0.0.1/$IP_PRIVADA_FRONT/" /etc/mysql/mysql.conf.d/mysqld.cnf
+sudo sed -i "s/127.0.0.1/$IP_PUBLICA_FRONT/" /etc/mysql/mysql.conf.d/mysqld.cnf
 
 #Reiniciamos servicio MySQL
-/etc/init.d/mysql restart
-
-
+systemctl restart mysql

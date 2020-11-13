@@ -38,6 +38,11 @@ En ella creamos nuestra front-end.sh y haremos nuestros script escpedífico para
 - Instalación de GoAccess
 - Instalación de Adminer 
 
+:exclamation: Tendremos que configurar el archivo config.inc.conf 
+:exclamation: Además de configurar el archivo config.php
+
+Esto se hace para que entre las máquinas frond-end y back-end se vean entre ellas
+
 ### Back-end
 
 Los requisitos para esta máquina serían
@@ -48,8 +53,6 @@ Los requisitos para esta máquina serían
 En ella crearemos nuestro back-end.sh y haremos nuestro script específico para esta máquina:
 
 - Instalación de MySQL Server 
-
-:exclamation: Tendremos que configurar el archivo config.inc.conf de tal manera para que ambas máquinas se vean
 
 Creados nuestras máquinas y script para fornt-end y back-end ejecutamos. 
 
