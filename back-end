@@ -9,7 +9,6 @@ apt install mysql-server -y
 
 #VARIABLES
 BD_ROOT_PASSWD=root
-IP_PRIVADA_MYSQL=172.31.38.125
 IP_PRIVADA_FRONT=172.31.87.228
 ROOT_MYSQL=pilar
 
@@ -33,7 +32,7 @@ mysql -u root -p$BD_ROOT_PASSWD < /home/ubuntu/iaw-practica-lamp/db/database.sql
 
 #Configuramos MySQL para permitir conexiones desde la IP privada de la instancia
 
-sudo sed -i "s/127.0.0.1/$IP_PRIVADA_MYSQL/" /etc/mysql/mysql.conf.d/mysqld.cnf
+sudo sed -i "s/127.0.0.1/$IP_PRIVADA_FRONT/" /etc/mysql/mysql.conf.d/mysqld.cnf
 
 #Reiniciamos servicio MySQL
 /etc/init.d/mysql restart
