@@ -86,7 +86,8 @@ git clone https://github.com/josejuansanchez/iaw-practica-lamp
 mv /var/www/html/iaw-practica-lamp/src/* /var/www/html/
 
 # Eliminamos contenido que no sea útil
-rm -rf /var/www/html/index.htmlrm -rf /var/www/html/iaw-practica-lamp
+rm -rf /var/www/html/index.html
+rm -rf /var/www/html/iaw-practica-lamp
 
 #Cambiamos los permisos
 chown www-data:www-data * -R
