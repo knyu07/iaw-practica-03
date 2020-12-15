@@ -7,7 +7,8 @@ apt update
 apt install apache2 -y
 
 # Instalamos los módulos de PHP
-apt install php libapache2-mod-php php-mysql -y
+apt install php libapache2-mod-php php-mysql php-mbstring -y 
+
 
 #-------------- Herramientas Administrativas -----------------------#
 
@@ -25,8 +26,8 @@ mv adminer-4.7.7-mysql.php index.php
 
 # INSTALACIÓN DE PHPMYADMIN
 #VARIABLES
-IP_MYSQL=52.91.120.118
-IP_MYSQL_PHP=52.91.120.118
+IP_MYSQL=3.85.225.90
+IP_MYSQL_PHP=3.85.225.90
 #Instalamos la utilidad unzip
 apt install unzip -y
 
@@ -48,7 +49,7 @@ mv phpMyAdmin-5.0.4-all-languages/ /var/www/html/phpmyadmin
 cd /var/www/html/phpmyadmin
 mv config.sample.inc.php config.inc.php
 sed -i "s/localhost/$IP_MYSQL/" /var/www/html/phpmyadmin/config.inc.php
-sed -i "s/localhost/$IP_MYSQL_PHP/" /var/www/html/config.php
+
 
 # INSTALACIÓN GOACCESS
 
@@ -80,6 +81,7 @@ cd /var/www/html
 rm -rf iaw-practica-lamp
 git clone https://github.com/josejuansanchez/iaw-practica-lamp
 mv /var/www/html/iaw-practica-lamp/src/* /var/www/html/
+sed -i "s/localhost/$IP_MYSQL_PHP/" /var/www/html/config.php
 
 # Eliminamos contenido que no sea útil
 rm -rf /var/www/html/index.html
